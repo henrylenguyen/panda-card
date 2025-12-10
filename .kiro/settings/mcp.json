@@ -1,0 +1,140 @@
+{
+  "mcpServers": {
+    "serena": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "D:\\serena",
+        "run",
+        "serena",
+        "start-mcp-server",
+        "--transport",
+        "stdio",
+        "--project",
+        "d:\\kodomo"
+      ],
+      "disabled": false,
+      "autoApprove": [
+        "list_dir",
+        "read_file",
+        "read_file",
+        "read_file",
+        "read_file",
+        "search_for_pattern",
+        "find_file",
+        "find_symbol",
+        "think_about_collected_information",
+        "get_symbols_overview",
+        "get_symbols_overview",
+        "get_symbols_overview"
+      ],
+      "disabledTools": [
+        "create_text_file",
+        "replace_regex",
+        "insert_after_symbol",
+        "replace_symbol_body",
+        "insert_before_symbol",
+        "execute_shell_command"
+      ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "d:\\kodomo"
+      ],
+      "disabled": true,
+      "autoApprove": [
+        "read_text_file",
+        "read_text_file",
+        "read_multiple_files"
+      ]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-brave-search"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "BSAxzMTRAIq8pknqrU5M5sOqRhzTZrv"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "brave_web_search",
+        "brave_web_search",
+        "brave_web_search"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "disabled": false,
+      "autoApprove": [
+        "sequentialthinking"
+      ]
+    },
+    "memory-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "disabled": true,
+      "autoApprove": [
+        "add_observations",
+        "create_entities",
+        "create_relations"
+      ]
+    },
+    "human-mcp": {
+      "command": "npx",
+      "args": [
+        "@goonnguyen/human-mcp"
+      ],
+      "env": {
+        "GOOGLE_GEMINI_API_KEY": "AIzaSyABsqQBviQ8a_lRNvf0_9QKaEUSeEP9XCk"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "eyes_analyze",
+        "eyes_compare"
+      ]
+    },
+    "browsermcp": {
+      "command": "npx",
+      "args": [
+        "@browsermcp/mcp@latest"
+      ],
+      "disabled": false,
+      "autoApprove": [
+        "browser_navigate",
+        "browser_type",
+        "browser_snapshot",
+        "browser_wait",
+        "browser_screenshot",
+        "browser_wait",
+        "browser_click"
+      ]
+    },
+    "figma-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-figma"
+      ],
+      "env": {
+        "FIGMA_API_KEY": "figd_3EMgcvTBv4wuwS-I633fJPjKzi8Dgc4YTw71S6cZ"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "get_file_components",
+        "get_image"
+      ]
+    }
+  }
+}
