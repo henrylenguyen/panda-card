@@ -12,7 +12,7 @@ const benefits = [
   {
     title: 'REASONABLE RENTAL FEE',
     icon: (
-      <div className="relative size-[200px] flex items-center justify-center">
+      <div className="relative size-[120px] sm:size-[150px] md:size-[200px] flex items-center justify-center">
         <Image src={Fee} alt="fee" width={300} height={300} className="group-hover:scale-110 transition-transform duration-150" />
       </div>
     ),
@@ -21,7 +21,7 @@ const benefits = [
   {
     title: 'QUICK PROCESS',
     icon: (
-      <div className="relative size-[200px] flex items-center justify-center">
+      <div className="relative size-[120px] sm:size-[150px] md:size-[200px] flex items-center justify-center">
         <Image src={Progress} alt="progress" width={300} height={300} className="group-hover:scale-110 transition-transform duration-150" />
       </div>
     ),
@@ -30,7 +30,7 @@ const benefits = [
   {
     title: 'HIGH SECURITY',
     icon: (
-      <div className="relative size-[200px] flex items-center justify-center">
+      <div className="relative size-[120px] sm:size-[150px] md:size-[200px] flex items-center justify-center">
         <Image src={Security} alt='security' width={300} height={300} className="group-hover:scale-110 transition-transform duration-150" />
       </div>
     ),
@@ -39,7 +39,7 @@ const benefits = [
   {
     title: '24/7 SUPPORT',
     icon: (
-      <div className="relative size-[200px] flex items-center justify-center">
+      <div className="relative size-[120px] sm:size-[150px] md:size-[200px] flex items-center justify-center">
         <Image src={Support} alt='support' width={300} height={300} className="group-hover:scale-110 transition-transform duration-150" />
       </div>
     ),

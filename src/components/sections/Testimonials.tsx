@@ -62,6 +62,15 @@ export default function Testimonials() {
 
   const goToNext = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length)
 
+  // Auto play carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      goToNext()
+    }, 5000) // Change slide every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       {/* Background Decoration */}
@@ -109,7 +118,7 @@ export default function Testimonials() {
                 {/* Top Section: Image + Quote Icon + Nav Button */}
                 <div className="relative w-full flex justify-center mb-6">
                   {/* Person Image */}
-                  <div className="relative w-64 h-64 md:w-80 md:h-80 z-10">
+                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 z-10">
                     <Image
                       src={testimonials[currentIndex].avatar}
                       alt={testimonials[currentIndex].author}
@@ -135,9 +144,9 @@ export default function Testimonials() {
                 </div>
 
                 {/* Name Label - Overlapping */}
-                <div className="relative z-20 -mt-8 mb-8">
-                  <div className="bg-[#80DEEA] px-8 py-3 shadow-md">
-                    <p className="text-black font-bold text-lg whitespace-nowrap">
+                <div className="relative z-20 -mt-6 md:-mt-8 mb-6 md:mb-8">
+                  <div className="bg-[#80DEEA] px-4 sm:px-6 md:px-8 py-2 md:py-3 shadow-md">
+                    <p className="text-black font-bold text-sm sm:text-base md:text-lg whitespace-nowrap">
                       {testimonials[currentIndex].company} - {testimonials[currentIndex].author}, {testimonials[currentIndex].role}
                     </p>
                   </div>
@@ -163,11 +172,10 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`bg-gray-100 rounded-[2rem] p-12 text-center flex flex-col justify-center items-center h-full min-h-[250px] relative overflow-hidden shadow-lg hover:bg-gray-50 transition-colors'
-                }`}
+              className="bg-gray-100 rounded-[1.5rem] md:rounded-[2rem] p-6 sm:p-8 md:p-12 text-center flex flex-col justify-center items-center h-full min-h-[180px] md:min-h-[250px] relative overflow-hidden shadow-lg hover:bg-gray-50 transition-colors"
             >
             
-              <h3 className="text-6xl font-bold text-black mb-4 tracking-tight relative z-10">
+              <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-2 md:mb-4 tracking-tight relative z-10">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </h3>
               <p className="text-gray-600 font-medium text-base max-w-[200px] mx-auto leading-tight relative z-10">

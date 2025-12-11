@@ -32,7 +32,7 @@ export default function Services() {
               transition: { duration: 0.15 }
             }}
             viewport={{ once: true }}
-            className="group bg-white rounded-[2.5rem] p-10 border-[3px] border-t-[12px] border-[#80DEEA] shadow-sm hover:shadow-[0_20px_50px_rgba(128,222,234,0.3)] transition-all duration-150 cursor-pointer"
+            className="group bg-white rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-10 border-[3px] border-t-[8px] md:border-t-[12px] border-[#80DEEA] shadow-sm hover:shadow-[0_20px_50px_rgba(128,222,234,0.3)] transition-all duration-150 cursor-pointer"
           >
             {/* Top Logo */}
             <div className="flex justify-center">
@@ -43,7 +43,7 @@ export default function Services() {
             {/* Middle Content */}
             <div className="flex justify-between items-center mb-8">
               <h3 className="text-lg font-bold text-gray-900 uppercase">VISA CARD</h3>
-              <div className="relative w-48 h-36">
+              <div className="relative w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-36">
                 <Image
                   src={Visa}
                   alt="Visa Card"
@@ -70,7 +70,7 @@ export default function Services() {
             }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="group bg-white rounded-[2.5rem] p-10 border-[3px] border-t-[12px] border-[#EF5350] shadow-sm hover:shadow-[0_20px_50px_rgba(239,83,80,0.3)] transition-all duration-150 cursor-pointer"
+            className="group bg-white rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-10 border-[3px] border-t-[8px] md:border-t-[12px] border-[#EF5350] shadow-sm hover:shadow-[0_20px_50px_rgba(239,83,80,0.3)] transition-all duration-150 cursor-pointer"
           >
             {/* Top Logo */}
             <div className="flex justify-center items-center gap-1">
@@ -80,7 +80,7 @@ export default function Services() {
             {/* Middle Content */}
             <div className="flex justify-between items-center mb-8">
               <h3 className="text-lg font-bold text-gray-900 uppercase">MASTER CARD</h3>
-              <div className="relative w-48 h-36">
+              <div className="relative w-32 h-24 sm:w-40 sm:h-28 md:w-48 md:h-36">
                 <Image
                   src={Mastercard}
                   alt="MasterCard"

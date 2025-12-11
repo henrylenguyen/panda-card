@@ -26,7 +26,7 @@ export default function Contact() {
       <div className="section-padding relative z-10">
         <div className="grid lg:grid-cols-2 gap-0 shadow-2xl rounded-3xl overflow-hidden">
           {/* Left - Image */}
-          <div className="relative min-h-[400px] overflow-hidden">
+          <div className="relative min-h-[250px] sm:min-h-[300px] md:min-h-[400px] overflow-hidden">
             <Image
               src={ContactImage}
               alt="Contact Us"
@@ -36,14 +36,14 @@ export default function Contact() {
             {/* Overlay Text */}
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <div className="text-center">
-                <h2 className="text-5xl font-bold text-white mb-2 tracking-tight">CONTACT</h2>
-                <h2 className="text-5xl font-bold text-white/80 tracking-tight">WITH US</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">CONTACT</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white/80 tracking-tight">WITH US</h2>
               </div>
             </div>
           </div>
 
           {/* Right - Form */}
-          <div className="bg-white p-12 relative">
+          <div className="bg-white p-6 sm:p-8 md:p-12 relative">
             <div className="mb-8">
               <h3 className="text-xl font-bold text-gray-800 uppercase mb-2">SEND MESSAGE</h3>
               <p className="text-gray-500 text-sm">
@@ -52,7 +52,7 @@ export default function Contact() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <input
                   type="text"
                   placeholder="First name"

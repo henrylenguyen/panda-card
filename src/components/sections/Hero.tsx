@@ -27,19 +27,19 @@ export default function Hero() {
                 delay: 0.6
               }
             }}
-            className="relative h-[400px] lg:h-[600px] rounded-3xl overflow-hidden lg:-mr-12"
+            className="relative h-[280px] sm:h-[350px] md:h-[400px] lg:h-[600px] 2xl:h-[700px] 3xl:h-[800px] rounded-3xl lg:-mr-12 order-2 lg:order-1"
           >
             <Image
               src={HeroImage}
               alt="Panda eating bamboo"
               fill
-              className="object-cover"
+              className="object-contain"
               priority
             />
           </motion.div>
 
           {/* Right - Content */}
-          <div className="text-right lg:-ml-8">
+          <div className="text-center lg:text-right lg:-ml-8 order-1 lg:order-2 mb-8 lg:mb-0">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl lg:text-5xl font-bold text-black leading-tight mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight mb-4 md:mb-6"
             >
               Card rental service reputable
               <br />& fast payment
@@ -62,7 +62,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-black mb-8 max-w-lg ml-auto leading-relaxed"
+              className="text-black mb-6 md:mb-8 max-w-lg mx-auto lg:ml-auto lg:mr-0 leading-relaxed text-sm md:text-base"
             >
               We provide reputable Visa and Master Card rental services, providing you with payment solutions at reasonable costs and high quality
             </motion.p>
@@ -74,7 +74,7 @@ export default function Hero() {
             >
               <Link
                 href="#contact"
-                className="inline-block bg-black text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-colors"
+                className="inline-block bg-black text-white px-6 sm:px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-base md:text-lg hover:bg-gray-800 transition-colors"
               >
                 Register Now
               </Link>

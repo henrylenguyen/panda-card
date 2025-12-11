@@ -46,9 +46,9 @@ export default function FAQ() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative -ml-4"
+            className="relative hidden lg:block -ml-4"
           >
-            <div className="relative h-[600px] w-[120%]">
+            <div className="relative h-[400px] md:h-[500px] lg:h-[600px] w-full lg:w-[120%]">
               <Image
                 src={FAQImage}
                 alt="FAQ Support"
@@ -71,12 +71,12 @@ export default function FAQ() {
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className={`w-full flex items-center justify-between p-6 rounded-xl transition-all duration-300 ${openIndex === index
+                  className={`w-full flex items-center justify-between p-4 sm:p-5 md:p-6 rounded-xl transition-all duration-300 ${openIndex === index
                       ? 'bg-white shadow-lg transform scale-[1.02]'
                     : 'bg-[#73B0FF] hover:bg-[#8BD8FF] shadow-sm'
                     }`}
                 >
-                  <span className="font-bold text-lg text-left">{faq.question}</span>
+                  <span className="font-bold text-sm sm:text-base md:text-lg text-left">{faq.question}</span>
                   {openIndex === index ? (
                     <ChevronUp className="w-6 h-6 flex-shrink-0" />
                   ) : (
