@@ -82,7 +82,7 @@ export default function Testimonials() {
         {/* Section Title */}
         <div className="text-center mb-16">
           <span className="inline-block bg-black text-white px-8 py-3 rounded-full text-sm font-bold tracking-wider uppercase">
-            Custormer Feedbacks
+            Customer Feedbacks
           </span>
         </div>
 

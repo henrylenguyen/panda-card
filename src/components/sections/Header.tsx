@@ -1,11 +1,11 @@
 'use client'
 
+import Logo from "@/assets/logo.png"
 import { motion } from 'framer-motion'
 import { Menu, Search, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import Logo from "@/assets/logo.png"
 
 const navItems = [
   { label: 'Homepage', href: '#hero' },
@@ -28,7 +28,7 @@ export default function Header() {
               alt="Panda Logo"
               width={100}
               height={120}
-              className="object-contain"
+            className="object-contain scale-150"
             />
         </Link>
 
