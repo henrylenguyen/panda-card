@@ -1,11 +1,11 @@
 'use client'
 
-import Logo from "@/assets/logo.png"
 import { motion } from 'framer-motion'
 import { Menu, Search, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import Logo from "/public/logo.jpg"
 
 const navItems = [
   { label: 'Homepage', href: '#hero' },

@@ -1,47 +1,63 @@
 'use client'
 
-import FeedBackLeft from "@/assets/feedback_left.png"
-import Quote from "@/assets/quote.svg"
-import { AnimatePresence, motion, useInView, useSpring, useTransform } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useSpring,
+  useTransform,
+} from 'framer-motion'
+import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 const testimonials = [
   {
-    quote: 'We were concerned about security when renting a large number of cards, but this service has exceeded all expectations. The system allows us to tightly control every transaction and easily lock/unlock cards instantly via the app. This is an extremely trustworthy financial partner that every e-commerce company should consider.',
+    quote:
+      'We were concerned about security when renting a large number of cards, but this service has exceeded all expectations. The system allows us to tightly control every transaction and easily lock/unlock cards instantly via the app. This is an extremely trustworthy financial partner that every e-commerce company should consider.',
     author: 'Anna Le',
-    role: 'CFO',
+    role: 'CEO',
     company: 'StartupHub Co.',
-    avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop'
+    avatar:
+      'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop',
   },
   {
-    quote: 'The card rental service has transformed how we handle international payments. Fast, secure, and incredibly convenient. Highly recommended for any business.',
-    author: 'John Smith',
-    role: 'Founder',
-    company: 'Tech Startup',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop'
+    quote:
+      'In media buying, speed is key. This service ensures the cards are always ready with the necessary limits, and the top-up process only takes a few seconds, with no delays. This helps us launch campaigns on time without missing opportunities. After multiple trials, I found this to be the fastest service on the current market.',
+    author: 'Lily Wong',
+    role: '',
+    company: 'Performance Agency',
+    avatar:
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
   },
   {
-    quote: 'Outstanding service and support. The team is always responsive and helpful whenever we need assistance with our cards.',
-    author: 'Sarah Johnson',
-    role: 'Marketing Director',
-    company: 'Creative Agency',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop'
-  }
+    quote:
+      "Partnering with this team has been a wonderful experience. They don't just provide cards; they offer a comprehensive payment solution. Whenever we face an issue with a specific transaction, the technical support team is always available to resolve it within minutes. We appreciate the team's dedication and sense of responsibility.",
+    author: 'Eric Hoang',
+    role: '',
+    company: 'Consulting Firm',
+    avatar:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop',
+  },
 ]
 
 const stats = [
-  { value: 2000, suffix: '+', label: 'Team and individual customer in the world', hasBorder: true },
-  { value: 99, suffix: '%', label: 'Positive feedback', hasBorder: false },
-  { value: 30, suffix: 'M+', label: 'Transactions per month', hasBorder: false }
+  {
+    value: 2000,
+    suffix: '+',
+    label: 'Team and individual customer in the world',
+  },
+  { value: 99, suffix: '%', label: 'Positive feedback' },
+  { value: 30, suffix: 'M+', label: 'Transactions per month' },
 ]
 
-function Counter({ value, suffix }: { value: number, suffix: string }) {
+function Counter({ value, suffix }: { value: number; suffix: string }) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
   const spring = useSpring(0, { mass: 1, stiffness: 50, damping: 20 })
-  const display = useTransform(spring, (current) => Math.round(current).toLocaleString())
+  const display = useTransform(spring, (current) =>
+    Math.round(current).toLocaleString()
+  )
 
   useEffect(() => {
     if (isInView) {
@@ -58,18 +74,29 @@ function Counter({ value, suffix }: { value: number, suffix: string }) {
 }
 
 export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [startIndex, setStartIndex] = useState(0)
 
-  const goToNext = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+  const goToNext = useCallback(() => {
+    setStartIndex((prev) => (prev + 1) % testimonials.length)
+  }, [])
 
   // Auto play carousel
   useEffect(() => {
     const interval = setInterval(() => {
       goToNext()
-    }, 5000) // Change slide every 5 seconds
+    }, 5000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [goToNext])
+
+  // Get 3 visible testimonials
+  const getVisibleTestimonials = () => {
+    const visible = []
+    for (let i = 0; i < 3; i++) {
+      visible.push(testimonials[(startIndex + i) % testimonials.length])
+    }
+    return visible
+  }
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
@@ -86,80 +113,61 @@ export default function Testimonials() {
           </span>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 mb-20">
-          {/* Left Column: Feedback Image with Icons */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="relative w-full"
-          >
-            <div className="relative aspect-[5/4] w-full rounded-[2rem] overflow-hidden shadow-2xl">
-              <Image
-                src={FeedBackLeft}
-                alt="Customer Feedback Interaction"
-                fill
-                className="object-cover object-center"
-              />
-            </div>
-          </motion.div>
-
-          {/* Right Column: Testimonial Carousel */}
-          <div className="relative flex flex-col justify-center">
+        {/* Testimonial Cards */}
+        <div className="mb-20">
+          <div className="flex items-end gap-4">
             <AnimatePresence mode="wait">
               <motion.div
-                key={currentIndex}
+                key={startIndex}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
-                className="flex flex-col items-center h-full"
+                className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1"
               >
-                {/* Top Section: Image + Quote Icon + Nav Button */}
-                <div className="relative w-full flex justify-center mb-6">
-                  {/* Person Image */}
-                  <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 z-10">
-                    <Image
-                      src={testimonials[currentIndex].avatar}
-                      alt={testimonials[currentIndex].author}
-                      fill
-                      className="object-cover rounded-xl shadow-lg"
-                    />
+                {getVisibleTestimonials().map((testimonial, index) => (
+                  <div key={index} className="flex flex-col">
+                    {/* Quote Box */}
+                    <div className="bg-gray-100 rounded-2xl p-6 mb-4 flex-grow relative">
+                      {/* Speech bubble tail */}
+                      <div className="absolute -bottom-3 left-8 w-6 h-6 bg-gray-100 transform rotate-45" />
+                      <p className="text-gray-700 text-sm leading-relaxed relative z-10">
+                        {testimonial.quote}
+                      </p>
+                    </div>
+
+                    {/* Author Info */}
+                    <div className="flex items-center gap-3 mt-2">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-cyan-400">
+                        <Image
+                          src={testimonial.avatar}
+                          alt={testimonial.author}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <div>
+                        <span className="bg-[#8BD8FF] px-4 py-1 rounded-full font-bold text-sm text-black inline-block">
+                          {testimonial.author}
+                          {testimonial.role && `, ${testimonial.role}`}
+                        </span>
+                        <p className="text-gray-500 text-xs mt-1">
+                          {testimonial.company}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-
-                  {/* Right Side Elements */}
-                  <div className="absolute top-0 right-0 md:right-10 flex flex-col gap-8 items-center">
-                    {/* Quote Icon */}
-                    <Image src={Quote} height={80} width={80} alt="quote"/>
-                  
-
-                    {/* Next Button */}
-                    <button
-                      onClick={goToNext}
-                      className="w-12 h-12 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors"
-                    >
-                      <ArrowRight className="w-6 h-6 text-black" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Name Label - Overlapping */}
-                <div className="relative z-20 -mt-6 md:-mt-8 mb-6 md:mb-8">
-                  <div className="bg-[#80DEEA] px-4 sm:px-6 md:px-8 py-2 md:py-3 shadow-md">
-                    <p className="text-black font-bold text-sm sm:text-base md:text-lg whitespace-nowrap">
-                      {testimonials[currentIndex].company} - {testimonials[currentIndex].author}, {testimonials[currentIndex].role}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Testimonial Box */}
-                <div className="w-full bg-white border border-gray-300 rounded-2xl p-6 md:p-8 text-center relative z-0 flex items-center shadow-sm">
-                  <p className="text-gray-700 leading-relaxed text-base">
-                    {testimonials[currentIndex].quote}
-                  </p>
-                </div>
+                ))}
               </motion.div>
             </AnimatePresence>
+
+            {/* Next Button - aligned with author info */}
+            <button
+              onClick={goToNext}
+              className="w-10 h-10 rounded-full border-2 border-gray-300 bg-white hover:bg-gray-100 flex items-center justify-center transition-colors shadow-sm flex-shrink-0 mb-2"
+            >
+              <ChevronRight className="w-5 h-5 text-gray-500" />
+            </button>
           </div>
         </div>
 
@@ -172,9 +180,8 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-gray-100 rounded-[1.5rem] md:rounded-[2rem] p-6 sm:p-8 md:p-12 text-center flex flex-col justify-center items-center h-full min-h-[180px] md:min-h-[250px] relative overflow-hidden shadow-lg hover:bg-gray-50 transition-colors"
+              className="bg-[#8BD8FF] rounded-[1.5rem] md:rounded-[2rem] p-6 sm:p-8 md:p-12 text-center flex flex-col justify-center items-center h-full min-h-[180px] md:min-h-[250px] relative overflow-hidden"
             >
-            
               <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-2 md:mb-4 tracking-tight relative z-10">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </h3>

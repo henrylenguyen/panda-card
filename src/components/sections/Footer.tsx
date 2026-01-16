@@ -1,9 +1,9 @@
 'use client'
 
-import Logo from "@/assets/logo.png"
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Logo from "/public/logo.jpg"
 
 const navItems = [
   { label: 'Homepage', href: '#hero' },
