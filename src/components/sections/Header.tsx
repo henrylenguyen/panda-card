@@ -28,7 +28,7 @@ export default function Header() {
               alt="Panda Logo"
               width={100}
               height={120}
-            className="object-contain scale-150"
+            className="object-contain scale-100 md:scale-150"
             />
         </Link>
 

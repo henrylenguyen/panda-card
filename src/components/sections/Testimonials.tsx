@@ -89,7 +89,7 @@ export default function Testimonials() {
     return () => clearInterval(interval)
   }, [goToNext])
 
-  // Get 3 visible testimonials
+  // Get visible testimonials based on screen size (1 for mobile, 3 for desktop)
   const getVisibleTestimonials = () => {
     const visible = []
     for (let i = 0; i < 3; i++) {
@@ -99,23 +99,23 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-12 md:py-24 bg-white relative overflow-hidden">
       {/* Background Decoration */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-100/50 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-100 rounded-full blur-3xl opacity-70 -translate-x-1/2 translate-y-1/2" />
-      <div className="absolute top-20 left-20 w-32 h-32 bg-yellow-100 rounded-full blur-2xl opacity-60" />
+      <div className="absolute bottom-0 left-0 w-48 md:w-96 h-48 md:h-96 bg-cyan-100 rounded-full blur-3xl opacity-70 -translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-20 left-20 w-16 md:w-32 h-16 md:h-32 bg-yellow-100 rounded-full blur-2xl opacity-60" />
 
       <div className="section-padding relative z-10">
         {/* Section Title */}
-        <div className="text-center mb-16">
-          <span className="inline-block bg-black text-white px-8 py-3 rounded-full text-sm font-bold tracking-wider uppercase">
+        <div className="text-center mb-8 md:mb-16">
+          <span className="inline-block bg-black text-white px-6 md:px-8 py-2 md:py-3 rounded-full text-xs md:text-sm font-bold tracking-wider uppercase">
             Customer Feedbacks
           </span>
         </div>
 
         {/* Testimonial Cards */}
-        <div className="mb-20">
-          <div className="flex items-end gap-4">
+        <div className="mb-12 md:mb-20">
+          <div className="flex items-end gap-2 md:gap-4">
             <AnimatePresence mode="wait">
               <motion.div
                 key={startIndex}
@@ -123,22 +123,25 @@ export default function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1"
+                className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 flex-1"
               >
                 {getVisibleTestimonials().map((testimonial, index) => (
-                  <div key={index} className="flex flex-col">
+                  <div
+                    key={index}
+                    className={`flex flex-col ${index > 0 ? 'hidden md:flex' : ''}`}
+                  >
                     {/* Quote Box */}
-                    <div className="bg-gray-100 rounded-2xl p-6 mb-4 flex-grow relative">
+                    <div className="bg-gray-100 rounded-xl md:rounded-2xl p-4 md:p-6 mb-3 md:mb-4 flex-grow relative">
                       {/* Speech bubble tail */}
-                      <div className="absolute -bottom-3 left-8 w-6 h-6 bg-gray-100 transform rotate-45" />
-                      <p className="text-gray-700 text-sm leading-relaxed relative z-10">
+                      <div className="absolute -bottom-2 md:-bottom-3 left-6 md:left-8 w-4 md:w-6 h-4 md:h-6 bg-gray-100 transform rotate-45" />
+                      <p className="text-gray-700 text-xs md:text-sm leading-relaxed relative z-10">
                         {testimonial.quote}
                       </p>
                     </div>
 
                     {/* Author Info */}
-                    <div className="flex items-center gap-3 mt-2">
-                      <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-cyan-400">
+                    <div className="flex items-center gap-2 md:gap-3 mt-1 md:mt-2">
+                      <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-cyan-400 flex-shrink-0">
                         <Image
                           src={testimonial.avatar}
                           alt={testimonial.author}
@@ -147,11 +150,11 @@ export default function Testimonials() {
                         />
                       </div>
                       <div>
-                        <span className="bg-[#8BD8FF] px-4 py-1 rounded-full font-bold text-sm text-black inline-block">
+                        <span className="bg-[#8BD8FF] px-3 md:px-4 py-1 rounded-full font-bold text-xs md:text-sm text-black inline-block">
                           {testimonial.author}
                           {testimonial.role && `, ${testimonial.role}`}
                         </span>
-                        <p className="text-gray-500 text-xs mt-1">
+                        <p className="text-gray-500 text-[10px] md:text-xs mt-1">
                           {testimonial.company}
                         </p>
                       </div>
@@ -164,15 +167,15 @@ export default function Testimonials() {
             {/* Next Button - aligned with author info */}
             <button
               onClick={goToNext}
-              className="w-10 h-10 rounded-full border-2 border-gray-300 bg-white hover:bg-gray-100 flex items-center justify-center transition-colors shadow-sm flex-shrink-0 mb-2"
+              className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-gray-300 bg-white hover:bg-gray-100 flex items-center justify-center transition-colors shadow-sm flex-shrink-0 mb-1 md:mb-2"
             >
-              <ChevronRight className="w-5 h-5 text-gray-500" />
+              <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-gray-500" />
             </button>
           </div>
         </div>
 
         {/* Bottom - Stats */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -180,12 +183,12 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-[#8BD8FF] rounded-[1.5rem] md:rounded-[2rem] p-6 sm:p-8 md:p-12 text-center flex flex-col justify-center items-center h-full min-h-[180px] md:min-h-[250px] relative overflow-hidden"
+              className="bg-[#8BD8FF] rounded-xl md:rounded-[2rem] p-4 sm:p-6 md:p-12 text-center flex flex-col justify-center items-center h-full min-h-[120px] sm:min-h-[150px] md:min-h-[250px] relative overflow-hidden"
             >
-              <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-2 md:mb-4 tracking-tight relative z-10">
+              <h3 className="text-3xl sm:text-4xl md:text-6xl font-bold text-black mb-1 md:mb-4 tracking-tight relative z-10">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </h3>
-              <p className="text-gray-600 font-medium text-base max-w-[200px] mx-auto leading-tight relative z-10">
+              <p className="text-gray-600 font-medium text-xs sm:text-sm md:text-base max-w-[200px] mx-auto leading-tight relative z-10">
                 {stat.label}
               </p>
             </motion.div>

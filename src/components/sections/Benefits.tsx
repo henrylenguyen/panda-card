@@ -11,45 +11,29 @@ import Image from 'next/image'
 const benefits = [
   {
     title: 'REASONABLE RENTAL FEE',
-    icon: (
-      <div className="relative size-[120px] sm:size-[150px] md:size-[200px] flex items-center justify-center">
-        <Image src={Fee} alt="fee" width={300} height={300} className="group-hover:scale-110 transition-transform duration-150" />
-      </div>
-    ),
+    icon: Fee,
     description: 'The most competitive rental price in the market with flexible service packages suitable for businesses and individuals'
   },
   {
     title: 'QUICK PROCESS',
-    icon: (
-      <div className="relative size-[120px] sm:size-[150px] md:size-[200px] flex items-center justify-center">
-        <Image src={Progress} alt="progress" width={300} height={300} className="group-hover:scale-110 transition-transform duration-150" />
-      </div>
-    ),
+    icon: Progress,
     description: 'Register in minutes, quick information support'
   },
   {
     title: 'HIGH SECURITY',
-    icon: (
-      <div className="relative size-[120px] sm:size-[150px] md:size-[200px] flex items-center justify-center">
-        <Image src={Security} alt='security' width={300} height={300} className="group-hover:scale-110 transition-transform duration-150" />
-      </div>
-    ),
+    icon: Security,
     description: 'All customer information is always kept confidential and secure to ensure customer information safety'
   },
   {
     title: '24/7 SUPPORT',
-    icon: (
-      <div className="relative size-[120px] sm:size-[150px] md:size-[200px] flex items-center justify-center">
-        <Image src={Support} alt='support' width={300} height={300} className="group-hover:scale-110 transition-transform duration-150" />
-      </div>
-    ),
+    icon: Support,
     description: 'Customer support team is always ready to help you anytime, anywhere with dedicated consultants'
   }
 ]
 
 export default function Benefits() {
   return (
-    <section id="benefits" className="py-24 relative">
+    <section id="benefits" className="py-12 md:py-24 relative">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -62,14 +46,14 @@ export default function Benefits() {
 
       <div className="section-padding relative z-10">
         {/* Section Title */}
-        <div className="text-center mb-16">
-          <span className="inline-block bg-black text-white px-8 py-3 rounded-full text-sm font-bold tracking-wider uppercase">
+        <div className="text-center mb-8 md:mb-16">
+          <span className="inline-block bg-black text-white px-6 md:px-8 py-2 md:py-3 rounded-full text-xs md:text-sm font-bold tracking-wider uppercase">
             Why choosing us
           </span>
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {benefits.map((benefit, index) => (
             <motion.div
               key={benefit.title}
@@ -88,12 +72,17 @@ export default function Benefits() {
                 {benefit.title}
               </h3>
               <div className="mb-8 mt-4">
-                {benefit.icon}
+                <div className="relative w-56 h-56 sm:w-36 sm:h-36 md:w-44 md:h-44 flex items-center justify-center">
+                  <Image
+                    src={benefit.icon}
+                    alt={benefit.title}
+                    fill
+                    className="object-contain group-hover:scale-110 transition-transform duration-150"
+                  />
+                </div>
               </div>
 
-              
-
-              <p className=" text-md leading-relaxed px-2">
+              <p className="text-sm md:text-md leading-relaxed px-2">
                 {benefit.description}
               </p>
             </motion.div>
