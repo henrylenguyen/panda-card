@@ -13,12 +13,12 @@ export default function Hero() {
           {/* Left - Panda Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               x: 0,
               y: [0, -15, 0]
             }}
-            transition={{ 
+            transition={{
               duration: 0.6,
               y: {
                 duration: 4,
@@ -73,7 +73,7 @@ export default function Hero() {
               transition={{ delay: 0.3 }}
             >
               <Link
-                href="#contact"
+                href="/login"
                 className="inline-block bg-black text-white px-6 sm:px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-base md:text-lg hover:bg-gray-800 transition-colors"
               >
                 Register Now
