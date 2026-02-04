@@ -73,7 +73,8 @@ export default function Hero() {
               transition={{ delay: 0.3 }}
             >
               <Link
-                href="/login"
+                href="https://t.me/PeterAGC"
+                target="_blank"
                 className="inline-block bg-black text-white px-6 sm:px-8 md:px-10 py-3 md:py-4 rounded-full font-bold text-base md:text-lg hover:bg-gray-800 transition-colors"
               >
                 Register Now
